@@ -15,7 +15,7 @@ const CBHPM_TORACICA = [
   { codigo: "10105069", descricao: "Transporte extra-hospitalar aéreo ou aquático de pacientes graves, por hora adicional", secao: "Uti (1.01.04.00-3)" },
   { codigo: "10105034", descricao: "Transporte extra-hospitalar terrestre de pacientes graves, 1ª hora - a partir do", secao: "Uti (1.01.04.00-3)" },
   { codigo: "10105042", descricao: "Transporte extra-hospitalar terrestre de pacientes graves, por hora adicional -", secao: "Uti (1.01.04.00-3)" },
-  { codigo: "10106014", descricao: "Aconselhamento genético", secao: "Outros (1.01.06.00-6)" }, 
+  { codigo: "10106014", descricao: "Aconselhamento genético", secao: "Outros (1.01.06.00-6)" },
   { codigo: "10106146", descricao: "Atendimento ambulatorial em puericultura", secao: "Outros (1.01.06.00-6)" },
   { codigo: "10106030", descricao: "Atendimento ao familiar do adolescente", secao: "Outros (1.01.06.00-6)" },
   { codigo: "10106049", descricao: "Atendimento pediátrico a gestantes (3º trimestre)", secao: "Outros (1.01.06.00-6)" },
