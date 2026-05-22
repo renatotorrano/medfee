@@ -4720,7 +4720,7 @@ const sb = {
   async getAll(table) { return sbFetch(table + "?order=id"); },
   async insert(table, data) { return sbFetch(table, { method: "POST", body: JSON.stringify(data) }); },
   async update(table, id, data) { return sbFetch(`${table}?id=eq.${id}`, { method: "PATCH", body: JSON.stringify(data) }); },
-  async delete(table, id) { return sbFetch(`${table}?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" }); },
+  async delete(table, id) { return sbFetch(`${table}?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" }}); },
   async upsert(table, data) { return sbFetch(table, { method: "POST", body: JSON.stringify(data), headers: { Prefer: "resolution=merge-duplicates,return=representation" } }); },
 };
 
@@ -4916,10 +4916,10 @@ export default function MedFee() {
   if (loading) return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-      <div style={ minHeight: "100vh", background: "#080f17", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }>
-        <div style={ fontSize: 40, marginBottom: 20 }>🫁</div>
-        <div style={ fontSize: 18, fontWeight: 700, color: "#f0f0f0" }>Med<span style={ color: "#1a6cf0" }>Fee</span></div>
-        <div style={ fontSize: 13, color: "#555", marginTop: 10 }>Carregando dados...</div>
+      <div style={{ minHeight: "100vh", background: "#080f17", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
+        <div style={{ fontSize: 40, marginBottom: 20 }}>🫁</div>
+        <div style={{ fontSize: 18, fontWeight: 700, color: "#f0f0f0" }}>Med<span style={{ color: "#1a6cf0" }}>Fee</span></div>
+        <div style={{ fontSize: 13, color: "#555", marginTop: 10 }}>Carregando dados...</div>
       </div>
     </>
   );
@@ -4927,10 +4927,10 @@ export default function MedFee() {
   if (erro) return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-      <div style={ minHeight: "100vh", background: "#080f17", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif", padding: 24 }>
-        <div style={ fontSize: 40, marginBottom: 20 }>⚠️</div>
-        <div style={ fontSize: 14, color: "#f07070", textAlign: "center", marginBottom: 20 }>{erro}</div>
-        <button onClick={carregarDados} style={ background: "#1a6cf0", border: "none", borderRadius: 12, padding: "12px 24px", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer" }>Tentar novamente</button>
+      <div style={{ minHeight: "100vh", background: "#080f17", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif", padding: 24 }}>
+        <div style={{ fontSize: 40, marginBottom: 20 }}>⚠️</div>
+        <div style={{ fontSize: 14, color: "#f07070", textAlign: "center", marginBottom: 20 }}>{erro}</div>
+        <button onClick={carregarDados} style={{ background: "#1a6cf0", border: "none", borderRadius: 12, padding: "12px 24px", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>Tentar novamente</button>
       </div>
     </>
   );
@@ -4938,30 +4938,30 @@ export default function MedFee() {
   return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-      <div style={ minHeight: "100vh", background: "#080f17", fontFamily: "'Sora', sans-serif", maxWidth: 480, margin: "0 auto" }>
-        <div style={ padding: "52px 20px 16px", background: "linear-gradient(180deg, #0d1e30 0%, #080f17 100%)", borderBottom: "1px solid rgba(255,255,255,0.06)" }>
-          <div style={ display: "flex", alignItems: "center", justifyContent: "space-between" }>
+      <div style={{ minHeight: "100vh", background: "#080f17", fontFamily: "'Sora', sans-serif", maxWidth: 480, margin: "0 auto" }}>
+        <div style={{ padding: "52px 20px 16px", background: "linear-gradient(180deg, #0d1e30 0%, #080f17 100%)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div>
-              <div style={ fontSize: 11, color: "#7eb8f7", letterSpacing: 2, fontFamily: "'DM Mono', monospace", marginBottom: 4 }>HONORÁRIOS CIRÚRGICOS</div>
-              <h1 style={ margin: 0, fontSize: 26, fontWeight: 700, color: "#f0f0f0", letterSpacing: -0.5 }>Med<span style={ color: "#1a6cf0" }>Fee</span></h1>
+              <div style={{ fontSize: 11, color: "#7eb8f7", letterSpacing: 2, fontFamily: "'DM Mono', monospace", marginBottom: 4 }}>HONORÁRIOS CIRÚRGICOS</div>
+              <h1 style={{ margin: 0, fontSize: 26, fontWeight: 700, color: "#f0f0f0", letterSpacing: -0.5 }}>Med<span style={{ color: "#1a6cf0" }}>Fee</span></h1>
             </div>
-            <div style={ width: 44, height: 44, borderRadius: 14, background: "linear-gradient(135deg, #1a6cf0, #0a4db5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, boxShadow: "0 4px 20px rgba(26,108,240,0.4)" }>🫁</div>
+            <div style={{ width: 44, height: 44, borderRadius: 14, background: "linear-gradient(135deg, #1a6cf0, #0a4db5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, boxShadow: "0 4px 20px rgba(26,108,240,0.4)" }}>🫁</div>
           </div>
-          <div style={ fontSize: 13, color: "#7eb8f7", fontWeight: 600, fontFamily: "'Sora', sans-serif", marginTop: 12 }>{TITULOS[tab]}</div>
+          <div style={{ fontSize: 13, color: "#7eb8f7", fontWeight: 600, fontFamily: "'Sora', sans-serif", marginTop: 12 }}>{TITULOS[tab]}</div>
         </div>
-        <div style={ padding: "20px 16px 110px" }>
+        <div style={{ padding: "20px 16px 110px" }}>
           {tab === "novo" && <NovoPaciente convenios={convenios} cirurgiasRecorrentes={cirurgiasRec} hospitais={hospitais} onSalvar={onSalvar} />}
           {tab === "realizadas" && <TabRealizadas registros={registros} onMarcarPago={onMarcarPago} onRemover={onRemover} />}
           {tab === "pendentes" && <TabFiltrada registros={registros} pago={false} onMarcarPago={onMarcarPago} onRemover={onRemover} />}
           {tab === "pagas" && <TabFiltrada registros={registros} pago={true} onMarcarPago={onMarcarPago} onRemover={onRemover} />}
           {tab === "config" && <TabConfig convenios={convenios} setConvenios={handleSetConvenios} cirurgiasRec={cirurgiasRec} setCirurgiasRec={handleSetCirurgiasRec} registros={registros} setRegistros={handleSetRegistros} hospitais={hospitais} setHospitais={handleSetHospitais} />}
         </div>
-        <div style={ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, background: "rgba(8,15,23,0.97)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", padding: "10px 0 24px", zIndex: 100 }>
+        <div style={{ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, background: "rgba(8,15,23,0.97)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", padding: "10px 0 24px", zIndex: 100 }}>
           {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={ flex: 1, background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "6px 2px" }>
-              <span style={ fontSize: 19 }>{t.icon}</span>
-              <span style={ fontSize: 8, fontFamily: "'DM Mono', monospace", letterSpacing: 0.3, color: tab === t.id ? "#7eb8f7" : "#444", fontWeight: tab === t.id ? 700 : 400 }>{t.label.toUpperCase()}</span>
-              {tab === t.id && <div style={ width: 4, height: 4, borderRadius: "50%", background: "#1a6cf0" } />}
+            <button key={t.id} onClick={() => setTab(t.id)} style={{ flex: 1, background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "6px 2px" }}>
+              <span style={{ fontSize: 19 }}>{t.icon}</span>
+              <span style={{ fontSize: 8, fontFamily: "'DM Mono', monospace", letterSpacing: 0.3, color: tab === t.id ? "#7eb8f7" : "#444", fontWeight: tab === t.id ? 700 : 400 }}>{t.label.toUpperCase()}</span>
+              {tab === t.id && <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#1a6cf0" } />}
             </button>
           ))}
         </div>
