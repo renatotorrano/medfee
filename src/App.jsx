@@ -4735,6 +4735,10 @@ export default function MedFee() {
   const [registros, setRegistros] = useState([]);
   const [hospitais, setHospitais] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [senhaConfig, setSenhaConfig] = useState(false);
+  const [showSenha, setShowSenha] = useState(false);
+  const [senhaInput, setSenhaInput] = useState("");
+  const [senhaErro, setSenhaErro] = useState(false);
   const [erro, setErro] = useState("");
 
   // Carregar dados do Supabase
@@ -4958,7 +4962,15 @@ export default function MedFee() {
         </div>
         <div style={{ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, background: "rgba(8,15,23,0.97)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", padding: "10px 0 24px", zIndex: 100 }}>
           {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={{ flex: 1, background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "6px 2px" }}>
+            <button key={t.id} onClick={() => {
+                if (t.id === "config" && !senhaConfig) {
+                  setShowSenha(true);
+                  setSenhaInput("");
+                  setSenhaErro(false);
+                } else {
+                  setTab(t.id);
+                }
+              }} style={{ flex: 1, background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "6px 2px" }}>
               <span style={{ fontSize: 19 }}>{t.icon}</span>
               <span style={{ fontSize: 8, fontFamily: "'DM Mono', monospace", letterSpacing: 0.3, color: tab === t.id ? "#7eb8f7" : "#444", fontWeight: tab === t.id ? 700 : 400 }}>{t.label.toUpperCase()}</span>
               {tab === t.id && <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#1a6cf0" }} />}
@@ -4966,6 +4978,50 @@ export default function MedFee() {
           ))}
         </div>
       </div>
+
+        {showSenha && (
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.8)", zIndex: 2000, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+            <div style={{ background: "#0f1923", borderRadius: 20, padding: 28, width: "100%", maxWidth: 340, border: "1px solid rgba(255,255,255,0.1)" }}>
+              <div style={{ fontSize: 22, textAlign: "center", marginBottom: 8 }}>🔒</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: "#f0f0f0", fontFamily: "'Sora', sans-serif", textAlign: "center", marginBottom: 4 }}>Configurações</div>
+              <div style={{ fontSize: 13, color: "#666", fontFamily: "'DM Mono', monospace", textAlign: "center", marginBottom: 20 }}>Digite a senha para continuar</div>
+              <input
+                type="password"
+                value={senhaInput}
+                onChange={e => { setSenhaInput(e.target.value); setSenhaErro(false); }}
+                onKeyDown={e => {
+                  if (e.key === "Enter") {
+                    if (senhaInput === "Medfee1oapp") {
+                      setSenhaConfig(true);
+                      setShowSenha(false);
+                      setTab("config");
+                    } else {
+                      setSenhaErro(true);
+                      setSenhaInput("");
+                    }
+                  }
+                }}
+                placeholder="Senha"
+                autoFocus
+                style={{ width: "100%", background: "rgba(255,255,255,0.06)", border: senhaErro ? "1px solid #f07070" : "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: "#f0f0f0", padding: "12px 14px", fontSize: 15, fontFamily: "'Sora', sans-serif", outline: "none", boxSizing: "border-box", marginBottom: 8 }}
+              />
+              {senhaErro && <div style={{ fontSize: 12, color: "#f07070", fontFamily: "'DM Mono', monospace", marginBottom: 8, textAlign: "center" }}>Senha incorreta. Tente novamente.</div>}
+              <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
+                <button onClick={() => { setShowSenha(false); setSenhaInput(""); setSenhaErro(false); }} style={{ flex: 1, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: 12, color: "#aaa", fontSize: 14, fontFamily: "'Sora', sans-serif", cursor: "pointer" }}>Cancelar</button>
+                <button onClick={() => {
+                  if (senhaInput === "Medfee1oapp") {
+                    setSenhaConfig(true);
+                    setShowSenha(false);
+                    setTab("config");
+                  } else {
+                    setSenhaErro(true);
+                    setSenhaInput("");
+                  }
+                }} style={{ flex: 2, background: "linear-gradient(135deg, #1a6cf0, #0a4db5)", border: "none", borderRadius: 12, padding: 12, color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "'Sora', sans-serif", cursor: "pointer" }}>Entrar</button>
+              </div>
+            </div>
+          </div>
+        )}
     </>
   );
 }
