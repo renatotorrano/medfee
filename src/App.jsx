@@ -4720,7 +4720,7 @@ const sb = {
   async getAll(table) { return sbFetch(table + "?order=id"); },
   async insert(table, data) { return sbFetch(table, { method: "POST", body: JSON.stringify(data) }); },
   async update(table, id, data) { return sbFetch(`${table}?id=eq.${id}`, { method: "PATCH", body: JSON.stringify(data) }); },
-  async delete(table, id) { return sbFetch(`${table}?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" }}); },
+  async delete(table, id) { return sbFetch(`${table}?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" }); },
   async upsert(table, data) { return sbFetch(table, { method: "POST", body: JSON.stringify(data), headers: { Prefer: "resolution=merge-duplicates,return=representation" } }); },
 };
 
@@ -4961,7 +4961,7 @@ export default function MedFee() {
             <button key={t.id} onClick={() => setTab(t.id)} style={{ flex: 1, background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "6px 2px" }}>
               <span style={{ fontSize: 19 }}>{t.icon}</span>
               <span style={{ fontSize: 8, fontFamily: "'DM Mono', monospace", letterSpacing: 0.3, color: tab === t.id ? "#7eb8f7" : "#444", fontWeight: tab === t.id ? 700 : 400 }}>{t.label.toUpperCase()}</span>
-              {tab === t.id && <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#1a6cf0" } />}
+              {tab === t.id && <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#1a6cf0" }} />}
             </button>
           ))}
         </div>
